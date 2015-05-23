@@ -1,4 +1,4 @@
-from toffee.error.Error import ToffeeElementError
+from toffee.error.Error import ToffeeSyntaxError
 
 
 elements = {}
@@ -6,7 +6,7 @@ elements = {}
 
 def createElement(tag):
     if tag not in elements:
-        raise ToffeeElementError('Non-existent element: ' + tag)
+        raise ToffeeSyntaxError('Non-existent element: ' + tag)
 
     element = elements[tag]()
     return element
@@ -14,6 +14,6 @@ def createElement(tag):
 
 def addElement(element):
     if element.TAG in elements:
-        raise ToffeeElementError('Multiple elements with tag: ' + element.TAG)
+        raise ToffeeSyntaxError('Multiple elements with tag: ' + element.TAG)
 
     elements[element.TAG] = element

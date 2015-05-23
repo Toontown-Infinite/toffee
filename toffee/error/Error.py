@@ -2,5 +2,5 @@ class ToffeeError(Exception):
     pass
 
 
-class ToffeeElementError(ToffeeError):
+class ToffeeSyntaxError(ToffeeError):
     pass
