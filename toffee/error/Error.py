@@ -4,3 +4,7 @@ class ToffeeError(Exception):
 
 class ToffeeSyntaxError(ToffeeError):
     pass
+
+
+class ToffeeIncludeError(ToffeeError):
+    pass

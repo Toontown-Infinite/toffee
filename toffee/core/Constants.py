@@ -1,2 +1,2 @@
-TYPE_TOF = 1
-TYPE_TML = 2
+REL_TML = 'toffee/tml'
+REL_TOF = 'toffee/tof'
