@@ -1,3 +1,5 @@
+import collections
+
 from xml.etree import ElementTree
 
 from toffee.error.Error import ToffeeElementError
@@ -6,7 +8,7 @@ from toffee.element.PreElement import PreElement
 from toffee.element import ElementPool
 
 
-class ToplevelData:
+class ToplevelData(collections.MutableMapping):
     def __init__(self):
         self.meta = {}
         self.elements = []
@@ -30,11 +32,11 @@ class ToplevelData:
     def get(self, item, default=None):
         return self.meta.get(item, default)
 
-    def __getitem__(self, item):
-        return self.meta[item]
-
     def __setitem__(self, key, value):
         self.meta[key] = value
+
+    def __getitem__(self, item):
+        return self.meta[item]
 
     def __delitem__(self, key):
         del self.meta[key]
