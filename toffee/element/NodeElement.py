@@ -11,7 +11,7 @@ class NodeElement(Element):
         Element.__init__(self)
 
         self.name = None
-        self.xyz = []
+        self.pos = []
         self.hpr = []
         self.scale = []
         self.color = []
@@ -22,11 +22,11 @@ class NodeElement(Element):
     def getName(self):
         return self.name
 
-    def setXyz(self, x, y, z):
-        self.xyz = [x, y, z]
+    def setPos(self, x, y, z):
+        self.pos = [x, y, z]
 
-    def getXyz(self):
-        return self.xyz
+    def getPos(self):
+        return self.pos
 
     def setHpr(self, h, p, r):
         self.hpr = [h, p, r]
@@ -49,11 +49,11 @@ class NodeElement(Element):
     def readTml(self, toplevelData, root):
         self.name = root.attrib.get('name')
 
-        xyz = root.attrib.get('xyz', '0 0 0')
-        xyz = xyz.split()
+        pos = root.attrib.get('pos', '0 0 0')
+        pos = pos.split()
 
-        for value in xyz:
-            self.xyz.append(float(value))
+        for value in pos:
+            self.pos.append(float(value))
 
         hpr = root.attrib.get('hpr', '0 0 0')
         hpr = hpr.split()
@@ -76,7 +76,7 @@ class NodeElement(Element):
         Element.readTml(self, toplevelData, root)
 
     def applyAttributes(self, nodePath):
-        nodePath.setPos(*self.xyz)
+        nodePath.setPos(*self.pos)
         nodePath.setHpr(*self.hpr)
         nodePath.setColor(*self.color)
         nodePath.setScale(*self.scale)
