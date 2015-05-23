@@ -33,5 +33,8 @@ class Element:
             self.addChild(element)
             element.readTml(toplevelData, child)
 
+    def applyAttributes(self, nodePath):
+        pass
+
     def traverse(self, parent):
         pass

@@ -15,8 +15,19 @@ class ModelElement(NodeElement):
     def getSrc(self):
         return self.src
 
+    def readTml(self, toplevelData, root):
+        self.src = root.attrib.get('src')
+
+        NodeElement.readTml(self, toplevelData, root)
+
+    def applyAttributes(self, nodePath):
+        NodeElement.applyAttributes(self, nodePath)
+
+        nodePath.setName(self.name)
+
     def traverse(self, parent):
         model = loader.loadModel(self.src)
+        self.applyAttributes(model)
         model.reparentTo(parent)
 
         for child in self.children:
