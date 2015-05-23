@@ -2,17 +2,41 @@ from toffee.element.Element import Element
 from toffee.core import Constants
 from toffee.error.Error import ToffeeIncludeError
 
+from xml.etree import ElementTree
+
 
 class IncludeElement(Element):
     TAG = 'include'
 
-    def readTml(self, toplevelData, root):
-        rel = root.attrib['rel']
-        src = root.attrib['src']
+    def __init__(self):
+        Element.__init__(self)
 
-        if rel == Constants.REL_TML:
-            toplevelData.readTml(src)
-        elif rel == Constants.REL_TOF:
-            toplevelData.readTof(src)
+        self.rel = None
+        self.src = None
+
+    def setRel(self, rel):
+        self.rel = rel
+
+    def getRel(self):
+        return self.rel
+
+    def setSrc(self, src):
+        self.src = src
+
+    def getSrc(self):
+        return self.src
+
+    def readTml(self, toplevelData, root):
+        self.rel = root.attrib['rel']
+        self.src = root.attrib['src']
+
+        if self.rel == Constants.REL_TML:
+            toplevelData.readTml(self.src)
+        elif self.rel == Constants.REL_TOF:
+            toplevelData.readTof(self.src)
         else:
-            raise ToffeeIncludeError('Invalid relationship: ' + rel)
+            raise ToffeeIncludeError('Invalid relationship: ' + self.rel)
+
+    def writeTml(self, parent):
+        include = ElementTree.SubElement(parent, self.TAG,
+                                         rel=self.rel, src=self.src)

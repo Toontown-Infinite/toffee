@@ -1,6 +1,8 @@
 from toffee.element.Element import Element
 from toffee.element import ClassPool
 
+from xml.etree import ElementTree
+
 
 class ClassElement(Element):
     TAG = 'class'
@@ -35,4 +37,8 @@ class ClassElement(Element):
         self.name = root.attrib.pop('name')
         self.attributes = root.attrib.copy()
 
-        ClassPool.addClass(self.rel, self.name, self.attributes)
+        ClassPool.addClass(self.rel, self.name, self.attributes.copy())
+
+    def writeTml(self, parent):
+        class_ = ElementTree.SubElement(parent, self.TAG, rel=self.rel,
+                                        name=self.name, **self.attributes)

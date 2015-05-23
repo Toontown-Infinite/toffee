@@ -23,6 +23,9 @@ class Element:
     def readTof(self, toplevelData):
         pass
 
+    def writeTof(self):
+        pass
+
     def readTml(self, toplevelData, root):
         if 'class' in root.attrib:
             attributes = ClassPool.getClass(self.TAG, root.attrib['class'])
@@ -32,6 +35,9 @@ class Element:
             element = ElementPool.createElement(child.tag)
             self.addChild(element)
             element.readTml(toplevelData, child)
+
+    def writeTml(self, parent):
+        pass
 
     def applyAttributes(self, nodePath):
         pass
