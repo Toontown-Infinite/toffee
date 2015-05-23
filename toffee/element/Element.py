@@ -11,7 +11,7 @@ class Element:
         self.children = []
 
     def addChild(self, child):
-        if not isinstance(child, self.VALID_CHILDREN):
+        if child.TAG not in self.VALID_CHILDREN:
             raise ToffeeSyntaxError('Invalid child "%s" for root "%s"' %
                                     (child.TAG, self.TAG))
 

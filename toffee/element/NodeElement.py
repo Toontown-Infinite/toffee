@@ -5,6 +5,7 @@ from toffee.element.Element import Element
 
 class NodeElement(Element):
     TAG = 'node'
+    VALID_CHILDREN = ['node', 'model']
 
     def __init__(self):
         Element.__init__(self)

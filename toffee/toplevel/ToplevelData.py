@@ -3,8 +3,6 @@ import collections
 from xml.etree import ElementTree
 
 from toffee.error.Error import ToffeeSyntaxError
-from toffee.element.PreElement import PreElement
-from toffee.element.NodeElement import NodeElement
 from toffee.element import ElementPool
 
 
@@ -26,7 +24,7 @@ class ToplevelData(collections.MutableMapping):
         for child in root:
             element = ElementPool.createElement(child.tag)
 
-            if not isinstance(element, (PreElement, NodeElement)):
+            if child.tag not in ('pre', 'node'):
                 raise ToffeeSyntaxError('Invalid child "%s" for root "%s"' %
                                         (child.tag, root.tag))
 
