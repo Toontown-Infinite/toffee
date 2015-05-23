@@ -10,8 +10,8 @@ from toffee.element import ElementPool
 
 class ToplevelData(collections.MutableMapping):
     def __init__(self):
-        self.meta = collections.OrderedDict()
-        self.elements = collections.OrderedDict()
+        self.meta = {}
+        self.elements = {}
 
     def getToplevelElements(self):
         return tuple(itertools.chain(*self.elements.values()))
