@@ -1,6 +1,6 @@
 from toffee.error.Error import ToffeeSyntaxError
-
 from toffee.element import ElementPool
+from toffee.element import ClassPool
 
 
 class Element:
@@ -24,13 +24,14 @@ class Element:
         pass
 
     def readTml(self, toplevelData, root):
-        pass
+        if 'class' in root.attrib:
+            attributes = ClassPool.getClass(self.TAG, root.attrib['class'])
+            self.__dict__.update(attributes)
 
-    def readChildren(self, root):
         for child in root:
             element = ElementPool.createElement(child.tag)
             self.addChild(element)
-            yield child, element
+            element.readTml(toplevelData, child)
 
     def traverse(self, parent):
         pass

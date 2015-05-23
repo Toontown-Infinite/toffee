@@ -8,3 +8,7 @@ class ToffeeSyntaxError(ToffeeError):
 
 class ToffeeIncludeError(ToffeeError):
     pass
+
+
+class ToffeeClassError(ToffeeError):
+    pass

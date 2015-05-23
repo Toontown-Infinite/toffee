@@ -19,10 +19,9 @@ class NodeElement(Element):
         return self.name
 
     def readTml(self, toplevelData, root):
-        self.name = root.attrib['name']
+        self.name = root.attrib.get('name', 'node')
 
-        for child, element in self.readChildren(root):
-            element.readTml(toplevelData, child)
+        Element.readTml(self, toplevelData, root)
 
     def traverse(self, parent):
         nodePath = NodePath(self.name)
