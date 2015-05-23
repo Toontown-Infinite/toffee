@@ -1,0 +1,2 @@
+class ToffeeError(Exception):
+    pass
