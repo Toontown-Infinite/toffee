@@ -9,8 +9,6 @@ class Toplevel(NodePath):
 
     def traverse(self):
         for element in self.toplevelData.getToplevelElements():
-            nodePath = element.traverse()
-            if nodePath is not None:
-                nodePath.reparentTo(self)
+            element.traverse(self)
 
         return self
