@@ -67,7 +67,7 @@ class NodeElement(Element):
         for value in scale:
             self.scale.append(float(value))
 
-        color = root.attrib.get('color', '0 0 0 0')
+        color = root.attrib.get('color', '1 1 1 1')
         color = color.split()
 
         for value in color:
