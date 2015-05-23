@@ -4,15 +4,16 @@ from toffee.error.Error import ToffeeElementError
 elements = {}
 
 
-def getElementCtor(tag):
+def createElement(tag):
     if tag not in elements:
         raise ToffeeElementError('Non-existent element: ' + tag)
 
-    return elements
+    element = elements[tag]()
+    return element
 
 
-def addElementCtor(ctor):
-    if ctor.TAG in elements:
-        raise ToffeeElementError('Multiple elements with tag: ' + ctor.TAG)
+def addElement(element):
+    if element.TAG in elements:
+        raise ToffeeElementError('Multiple elements with tag: ' + element.TAG)
 
-    elements[ctor.TAG] = ctor
+    elements[element.TAG] = element

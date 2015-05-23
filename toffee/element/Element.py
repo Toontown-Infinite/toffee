@@ -10,8 +10,8 @@ class Element:
     def getChildren(self):
         return self.children
 
-    def tof(self):
+    def readTof(self, sceneData):
         pass
 
-    def tml(self):
+    def readTml(self, sceneData, root):
         pass
