@@ -27,7 +27,8 @@ class ToplevelData(collections.MutableMapping):
             element = ElementPool.createElement(child.tag)
 
             if not isinstance(element, (PreElement, NodeElement)):
-                raise ToffeeSyntaxError('Invalid child "%s" for root "%s"' % (child.tag, root.tag))
+                raise ToffeeSyntaxError('Invalid child "%s" for root "%s"' %
+                                        (child.tag, root.tag))
 
             self.elements.append(element)
             element.readTml(self, child)

@@ -1,7 +1,6 @@
 from pandac.PandaModules import NodePath
 
 from toffee.element.Element import Element
-from toffee.element import ElementPool
 
 
 class NodeElement(Element):
@@ -21,9 +20,7 @@ class NodeElement(Element):
     def readTml(self, toplevelData, root):
         self.name = root.attrib['name']
 
-        for child in root:
-            element = ElementPool.createElement(child.tag)
-            self.addChild(element)
+        for child, element in self.readChildren(root):
             element.readTml(toplevelData, child)
 
     def traverse(self, parent):
