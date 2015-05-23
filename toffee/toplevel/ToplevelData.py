@@ -29,12 +29,11 @@ class ToplevelData(collections.MutableMapping):
         root = tree.getroot()
 
         for child in root:
-            element = ElementPool.createElement(child.tag)
-
             if child.tag not in ('pre', 'node'):
                 raise ToffeeSyntaxError('Invalid child "%s" for root "%s"' %
                                         (child.tag, root.tag))
 
+            element = ElementPool.createElement(child.tag)
             elements.append(element)
             element.readTml(self, child)
 
