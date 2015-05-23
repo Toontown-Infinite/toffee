@@ -5,8 +5,8 @@ from toffee.element import ElementPool
 class PreElement(Element):
     TAG = 'pre'
 
-    def readTml(self, sceneData, root):
+    def readTml(self, toplevelData, root):
         for child in root:
             element = ElementPool.createElement(child.tag)
             self.addChild(element)
-            element.readTml(sceneData, child)
+            element.readTml(toplevelData, child)

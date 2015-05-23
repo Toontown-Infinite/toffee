@@ -10,8 +10,8 @@ class Element:
     def getChildren(self):
         return self.children
 
-    def readTof(self, sceneData):
+    def readTof(self, toplevelData):
         pass
 
-    def readTml(self, sceneData, root):
+    def readTml(self, toplevelData, root):
         pass
