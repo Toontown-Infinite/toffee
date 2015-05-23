@@ -10,3 +10,6 @@ class PreElement(Element):
             element = ElementPool.createElement(child.tag)
             self.addChild(element)
             element.readTml(toplevelData, child)
+
+    def traverse(self):
+        return None

@@ -1,6 +1,7 @@
 from toffee.error.Error import ToffeeError
 
 from toffee.toplevel.ToplevelData import ToplevelData
+from toffee.toplevel.Toplevel import Toplevel
 
 
 class File:
@@ -8,6 +9,12 @@ class File:
         self.path = path
         self.toplevelData = None
         self.toplevel = None
+
+    def getToplevel(self):
+        return self.toplevel
+
+    def getToplevelData(self):
+        return self.toplevelData
 
     def generateToplevelData(self):
         if self.toplevelData is not None:
@@ -27,3 +34,11 @@ class File:
     def generateToplevel(self):
         if self.toplevelData is None:
             raise ToffeeError('Tried to generate toplevel with no data.')
+
+        if self.toplevel is not None:
+            raise ToffeeError('Tried to generate toplevel more than once.')
+
+        self.toplevel = Toplevel(self.toplevelData)
+        self.toplevel.traverse()
+
+        return self.toplevel

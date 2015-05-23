@@ -15,3 +15,6 @@ class Element:
 
     def readTml(self, toplevelData, root):
         pass
+
+    def traverse(self, parent):
+        pass

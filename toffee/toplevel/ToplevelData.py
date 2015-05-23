@@ -13,6 +13,9 @@ class ToplevelData(collections.MutableMapping):
         self.meta = {}
         self.elements = []
 
+    def getToplevelElements(self):
+        return self.elements
+
     def readTof(self, path):
         pass
 
