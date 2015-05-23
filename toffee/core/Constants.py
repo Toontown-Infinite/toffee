@@ -1,0 +1,2 @@
+TYPE_TOF = 1
+TYPE_TML = 2
