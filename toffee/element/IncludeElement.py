@@ -36,7 +36,7 @@ class IncludeElement(Element):
             toplevelData.readTof(self.src)
         elif self.rel == Constants.REL_PLUGIN:
             try:
-                __import__(self.src)
+                __import__('plugins.' + self.src)
             except ImportError:
                 raise ToffeePluginError('Error loading plugin: ' + self.src)
         else:
