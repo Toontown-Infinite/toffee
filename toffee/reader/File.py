@@ -1,4 +1,4 @@
-from toffee.error.Error import ToffeeError
+from toffee.core.Error import ToffeeError
 
 from toffee.toplevel.ToplevelData import ToplevelData
 from toffee.toplevel.Toplevel import Toplevel

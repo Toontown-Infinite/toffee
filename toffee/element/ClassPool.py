@@ -1,6 +1,6 @@
 import collections
 
-from toffee.error.Error import ToffeeClassError
+from toffee.core.Error import ToffeeClassError
 
 
 classes = collections.OrderedDict()

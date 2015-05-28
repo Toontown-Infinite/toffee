@@ -1,10 +1,8 @@
 import collections
-
 import itertools
-
 from xml.etree import ElementTree
 
-from toffee.error.Error import ToffeeError, ToffeeSyntaxError
+from toffee.core.Error import ToffeeError, ToffeeSyntaxError
 from toffee.element import ElementPool
 
 

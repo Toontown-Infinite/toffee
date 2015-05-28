@@ -1,4 +1,4 @@
-from toffee.error.Error import ToffeeSyntaxError
+from toffee.core.Error import ToffeeSyntaxError
 
 
 elements = {}

@@ -1,8 +1,8 @@
+from xml.etree import ElementTree
+
 from toffee.element.Element import Element
 from toffee.core import Constants
-from toffee.error.Error import ToffeeIncludeError
-
-from xml.etree import ElementTree
+from toffee.core.Error import ToffeeIncludeError, ToffeePluginError
 
 
 class IncludeElement(Element):
@@ -34,6 +34,11 @@ class IncludeElement(Element):
             toplevelData.readTml(self.src)
         elif self.rel == Constants.REL_TOF:
             toplevelData.readTof(self.src)
+        elif self.rel == Constants.REL_PLUGIN:
+            try:
+                __import__(self.src)
+            except ImportError:
+                raise ToffeePluginError('Error loading plugin: ' + self.src)
         else:
             raise ToffeeIncludeError('Invalid relationship: ' + self.rel)
 

@@ -1,4 +1,4 @@
-from toffee.error.Error import ToffeeSyntaxError, ToffeeError
+from toffee.core.Error import ToffeeSyntaxError
 from toffee.element import ElementPool
 from toffee.element import ClassPool
 
