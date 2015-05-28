@@ -1,4 +1,4 @@
-from toffee.error.Error import ToffeeSyntaxError
+from toffee.error.Error import ToffeeSyntaxError, ToffeeError
 from toffee.element import ElementPool
 from toffee.element import ClassPool
 
@@ -44,3 +44,10 @@ class Element:
 
     def traverse(self, parent):
         pass
+
+    def cleanup(self):
+        for child in self.children:
+            child.cleanup()
+
+        del self.children[:]
+        del self.children

@@ -72,6 +72,17 @@ class ToplevelData(collections.MutableMapping):
             if level and (not element.tail or not element.tail.strip()):
                 element.tail = indent
 
+    def cleanup(self):
+        for file in self.elements:
+            for element in self.elements[file]:
+                element.cleanup()
+
+        self.meta.clear()
+        del self.meta
+
+        self.elements.clear()
+        del self.elements
+
     def get(self, item, default=None):
         return self.meta.get(item, default)
 

@@ -40,3 +40,9 @@ class IncludeElement(Element):
     def writeTml(self, parent):
         include = ElementTree.SubElement(parent, self.TAG,
                                          rel=self.rel, src=self.src)
+
+    def cleanup(self):
+        del self.rel
+        del self.src
+
+        Element.cleanup(self)

@@ -88,3 +88,20 @@ class NodeElement(Element):
 
         for child in self.children:
             child.traverse(nodePath)
+
+    def cleanup(self):
+        del self.name
+
+        del self.pos[:]
+        del self.pos
+
+        del self.hpr[:]
+        del self.hpr
+
+        del self.scale[:]
+        del self.scale
+
+        del self.color[:]
+        del self.color
+
+        Element.cleanup(self)

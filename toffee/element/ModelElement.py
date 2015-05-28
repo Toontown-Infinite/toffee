@@ -32,3 +32,8 @@ class ModelElement(NodeElement):
 
         for child in self.children:
             child.traverse(model)
+
+    def cleanup(self):
+        del self.src
+
+        NodeElement.cleanup(self)

@@ -20,3 +20,9 @@ class MetaElement(Element):
 
     def writeTml(self, parent):
         meta = ElementTree.SubElement(parent, self.TAG, **self.meta)
+
+    def cleanup(self):
+        self.meta.clear()
+        del self.meta
+
+        Element.cleanup(self)

@@ -16,6 +16,18 @@ def addClass(rel, name, attributes):
     classes[rel][name] = attributes
 
 
+def removeClass(rel, name):
+    if rel not in classes:
+        raise ToffeeClassError('Unknown relationship: ' + rel)
+
+    if name not in classes[rel]:
+        raise ToffeeClassError('Unknown class "%s" for relationship "%"' %
+                               (name, rel))
+
+    classes[rel][name].clear()
+    del classes[rel][name]
+
+
 def getClass(rel, name):
     if rel not in classes:
         raise ToffeeClassError('Unknown relationship: ' + rel)

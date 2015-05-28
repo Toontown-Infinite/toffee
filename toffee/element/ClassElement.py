@@ -42,3 +42,14 @@ class ClassElement(Element):
     def writeTml(self, parent):
         class_ = ElementTree.SubElement(parent, self.TAG, rel=self.rel,
                                         name=self.name, **self.attributes)
+
+    def cleanup(self):
+        ClassPool.removeClass(self.rel, self.name)
+
+        del self.rel
+        del self.name
+
+        self.attributes.clear()
+        del self.attributes
+
+        Element.cleanup(self)
