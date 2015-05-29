@@ -10,3 +10,6 @@
 
 # Mac directory info:
 .DS_Store
+
+# Plugins:
+plugins/*
