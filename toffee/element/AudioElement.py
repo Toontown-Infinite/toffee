@@ -22,3 +22,9 @@ class AudioElement(Element):
         attribute.construct(self.src, self.volume, parent)
 
         toplevel.addAttribute(attribute)
+
+    def cleanup(self):
+        del self.src
+        del self.volume
+
+        Element.cleanup(self)
