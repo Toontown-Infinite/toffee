@@ -42,7 +42,7 @@ class Element:
     def applyAttributes(self, nodePath):
         pass
 
-    def traverse(self, parent):
+    def traverse(self, toplevel, parent):
         pass
 
     def cleanup(self):

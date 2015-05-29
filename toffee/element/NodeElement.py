@@ -5,7 +5,7 @@ from toffee.element.Element import Element
 
 class NodeElement(Element):
     TAG = 'node'
-    VALID_CHILDREN = ['node', 'model']
+    VALID_CHILDREN = ['node', 'model', 'audio']
 
     def __init__(self):
         Element.__init__(self)
@@ -81,13 +81,13 @@ class NodeElement(Element):
         nodePath.setColor(*self.color)
         nodePath.setScale(*self.scale)
 
-    def traverse(self, parent):
+    def traverse(self, toplevel, parent):
         nodePath = NodePath(self.name)
         self.applyAttributes(nodePath)
         nodePath.reparentTo(parent)
 
         for child in self.children:
-            child.traverse(nodePath)
+            child.traverse(toplevel, nodePath)
 
     def cleanup(self):
         del self.name

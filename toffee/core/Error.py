@@ -16,3 +16,7 @@ class ToffeeClassError(ToffeeError):
 
 class ToffeePluginError(ToffeeError):
     pass
+
+
+class ToffeeAttributeError(ToffeeError):
+    pass

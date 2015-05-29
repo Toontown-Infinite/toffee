@@ -25,13 +25,13 @@ class ModelElement(NodeElement):
 
         nodePath.setName(self.name)
 
-    def traverse(self, parent):
+    def traverse(self, toplevel, parent):
         model = loader.loadModel(self.src)
         self.applyAttributes(model)
         model.reparentTo(parent)
 
         for child in self.children:
-            child.traverse(model)
+            child.traverse(toplevel, model)
 
     def cleanup(self):
         del self.src
